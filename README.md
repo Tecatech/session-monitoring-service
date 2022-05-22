@@ -229,6 +229,117 @@ Complete!
 ## Демонстрация работы сервиса
 
 ```
+[tecatexas@10 rpmbuild]$ pstree
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─NetworkManager───2*[{NetworkManager}]
+        ├─accounts-daemon───2*[{accounts-daemon}]
+        ├─alsactl
+        ├─atd
+        ├─auditd─┬─sedispatch
+        │        └─2*[{auditd}]
+        ├─avahi-daemon───avahi-daemon
+        ├─chronyd
+        ├─colord───2*[{colord}]
+        ├─crond
+        ├─cupsd
+        ├─dbus-daemon
+        ├─dnsmasq───dnsmasq
+        ├─firewalld───{firewalld}
+        ├─fprintd───4*[{fprintd}]
+        ├─gdm─┬─gdm-session-wor─┬─gdm-wayland-ses─┬─gnome-session-b─┬─gnome-she+
+        │     │                 │                 │                 ├─gnome-sof+
+        │     │                 │                 │                 ├─gsd-a11y-+
+        │     │                 │                 │                 ├─gsd-accou+
+        │     │                 │                 │                 ├─gsd-clipb+
+        │     │                 │                 │                 ├─gsd-color+++
+        │     │                 │                 │                 ├─gsd-datet+
+        │     │                 │                 │                 ├─gsd-disk-+
+        │     │                 │                 │                 ├─gsd-house+
+        │     │                 │                 │                 ├─gsd-keybo+
+        │     │                 │                 │                 ├─gsd-media+
+        │     │                 │                 │                 ├─gsd-mouse+++
+        │     │                 │                 │                 ├─gsd-power+++
+        │     │                 │                 │                 ├─gsd-print+
+        │     │                 │                 │                 ├─gsd-rfkil+
+        │     │                 │                 │                 ├─gsd-scree+
+        │     │                 │                 │                 ├─gsd-shari+
+        │     │                 │                 │                 ├─gsd-smart+
+        │     │                 │                 │                 ├─gsd-sound+++
+        │     │                 │                 │                 ├─gsd-wacom+++
+        │     │                 │                 │                 ├─gsd-xsett+
+        │     │                 │                 │                 ├─tracker-m+
+        │     │                 │                 │                 ├─tracker-m+
+        │     │                 │                 │                 └─3*[{gnome+
+        │     │                 │                 └─2*[{gdm-wayland-ses}]
+        │     │                 └─3*[{gdm-session-wor}]
+        │     └─2*[{gdm}]
+        ├─geoclue───2*[{geoclue}]
+        ├─gnome-keyring-d───3*[{gnome-keyring-d}]
+        ├─3*[gpg-agent]
+        ├─gsd-printer───3*[{gsd-printer}]
+        ├─gssproxy───5*[{gssproxy}]
+        ├─httpd─┬─httpd
+        │       ├─2*[httpd───64*[{httpd}]]
+        │       └─httpd───80*[{httpd}]
+        ├─ibus-x11───6*[{ibus-x11}]
+        ├─ksmtuned───sleep
+        ├─lsmd
+        ├─mcelog
+        ├─nm-dispatcher───2*[{nm-dispatcher}]
+        ├─packagekitd───2*[{packagekitd}]
+        ├─polkitd───5*[{polkitd}]
+        ├─rhsmcertd
+        ├─rpcbind
+        ├─rsyslogd───2*[{rsyslogd}]
+        ├─rtkit-daemon───2*[{rtkit-daemon}]
+        ├─session-monitor───sleep
+        ├─smartd
+        ├─sshd
+        ├─sssd─┬─sssd_be
+        │      └─sssd_nss
+        ├─sssd_kcm
+        ├─systemd─┬─(sd-pam)
+        │         ├─at-spi-bus-laun─┬─dbus-daemon
+        │         │                 └─3*[{at-spi-bus-laun}]
+        │         ├─at-spi2-registr───2*[{at-spi2-registr}]
+        │         ├─dbus-daemon
+        │         ├─dconf-service───2*[{dconf-service}]
+        │         ├─evolution-addre─┬─evolution-addre───5*[{evolution-addre}]
+        │         │                 └─4*[{evolution-addre}]
+        │         ├─evolution-calen─┬─evolution-calen───8*[{evolution-calen}]
+        │         │                 └─4*[{evolution-calen}]
+        │         ├─evolution-sourc───3*[{evolution-sourc}]
+        │         ├─gnome-shell-cal───5*[{gnome-shell-cal}]
+        │         │
+        │         ├─gnome-terminal-─┬─bash───pstree
+        │         │                 └─3*[{gnome-terminal-}]
+        │         ├─goa-daemon───3*[{goa-daemon}]
+        │         ├─goa-identity-se───3*[{goa-identity-se}]
+        │         ├─gpg-agent
+        │         ├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+        │         ├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+        │         ├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+        │         ├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+        │         ├─gvfs-udisks2-vo───3*[{gvfs-udisks2-vo}]
+        │         ├─gvfsd─┬─gvfsd-dnssd───2*[{gvfsd-dnssd}]
+        │         │       ├─gvfsd-network───3*[{gvfsd-network}]
+        │         │       ├─gvfsd-trash───2*[{gvfsd-trash}]
+        │         │       └─2*[{gvfsd}]
+        │         ├─gvfsd-fuse───5*[{gvfsd-fuse}]
+        │         ├─gvfsd-metadata───2*[{gvfsd-metadata}]
+        │         ├─ibus-portal───2*[{ibus-portal}]
+        │         ├─nautilus───4*[{nautilus}]
+        │         ├─pulseaudio───2*[{pulseaudio}]
+        │         ├─tracker-store───4*[{tracker-store}]
+        │         └─xdg-permission-───2*[{xdg-permission-}]
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-machine
+        ├─systemd-udevd
+        ├─tuned───4*[{tuned}]
+        ├─udisksd───4*[{udisksd}]
+        ├─upowerd───2*[{upowerd}]
+        └─wpa_supplicant
 [tecatexas@10 rpmbuild]$ journalctl -f -u session-monitoring
 -- Logs begin at Fri 2022-05-20 05:45:34 EDT. --
 May 20 06:38:36 10.0.2.15 systemd[1]: Stopped Session monitoring service.
