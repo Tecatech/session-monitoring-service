@@ -6,7 +6,7 @@
 
 ## Создание RPM-пакета из сценария на языке Bash
 
-```bash
+```
 [tecatexas@10 ~]$ cd
 [tecatexas@10 ~]$ rpmdev-setuptree
 [tecatexas@10 ~]$ cd ~/rpmbuild/SOURCES/
@@ -100,7 +100,7 @@ Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.tEtCfk
 
 ## Настройка политики SELinux
 
-```bash
+```
 [tecatexas@10 SOURCES]$ sepolicy generate --init session-monitoring
 Created the following files:
 /home/tecatexas/rpmbuild/session_monitoring.te # Type Enforcement file
@@ -168,7 +168,7 @@ system_u:object_r:session-monitoring_exec_t:s0 14134 ?  00:00:00 session-monitor
 
 ## Электронная цифровая подпись RPM-пакета
 
-```bash
+```
 [tecatexas@10 rpmbuild]$ gpg2 --gen-key
 [tecatexas@10 rpmbuild]$ gpg2 --export -a 'Rodionov Dmitriy' > ~/rpmbuild/RPM-GPG-KEY-Rodionov-Dmitriy
 [tecatexas@10 rpmbuild]$ nano ~/.rpmmacros
@@ -178,7 +178,7 @@ system_u:object_r:session-monitoring_exec_t:s0 14134 ?  00:00:00 session-monitor
 
 ## Создание RPM-репозитория
 
-```bash
+```
 [tecatexas@10 rpmbuild]$ sudo mkdir -p /var/www/html/session-monitoring-repo/
 [tecatexas@10 rpmbuild]$ sudo cp ~/rpmbuild/RPMS/*/*.rpm /var/www/html/session-monitoring-repo/
 [tecatexas@10 rpmbuild]$ sudo cp ~/rpmbuild/RPM-GPG-KEY-Rodionov-Dmitriy /var/www/html/session-monitoring-repo/
@@ -228,7 +228,7 @@ Complete!
 
 ## Демонстрация работы сервиса
 
-```bash
+```
 [tecatexas@10 rpmbuild]$ journalctl -f -u session-monitoring
 -- Logs begin at Sun 2022-05-20 05:45:34 EDT. --
 May 20 06:38:36 10.0.2.15 systemd[1]: Stopped Session monitoring service.
