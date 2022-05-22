@@ -29,7 +29,7 @@ session-monitoring-1.0/session-monitoring-test
 session-monitoring-1.0/session-monitoring.8
 session-monitoring-1.0/session-monitoring.8.gz
 [tecatexas@10 SOURCES]$ cd ../SPECS/
-[tecatexas@10 SOURCES]$ nano session-monitoring.spec
+[tecatexas@10 SPECS]$ nano session-monitoring.spec
 [tecatexas@10 SPECS]$ rpmbuild -ba session-monitoring.spec
 Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.5IEGAh
 + umask 022
@@ -108,7 +108,7 @@ Created the following files:
 /home/tecatexas/rpmbuild/session_monitoring.fc # File Contexts file
 /home/tecatexas/rpmbuild/session_monitoring_selinux.spec # Spec file
 /home/tecatexas/rpmbuild/session_monitoring.sh # Setup Script
-[tecatexas@10 SPECS]$ sudo ./session_monitoring.sh
+[tecatexas@10 SOURCES]$ sudo ./session_monitoring.sh
 Building and Loading Policy
 + make -f /usr/share/selinux/devel/Makefile session_monitoring.pp
 Compiling targeted session_monitoring module
