@@ -1,0 +1,39 @@
+## <summary>policy for session_monitoring</summary>
+
+########################################
+## <summary>
+##    Execute session_monitoring_exec_t in the session_monitoring domain.
+## </summary>
+## <param name="domain">
+## <summary>
+##    Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`session_monitoring_domtrans',`
+    gen_require(`
+        type session_monitoring_t, session_monitoring_exec_t;
+    ')
+    
+    corecmd_search_bin($1)
+    domtrans_pattern($1, session_monitoring_exec_t, session_monitoring_t)
+')
+
+######################################
+## <summary>
+##    Execute session_monitoring in the caller domain.
+## </summary>
+## <param name="domain">
+##    <summary>
+##    Domain allowed access.
+##    </summary>
+## </param>
+#
+interface(`session_monitoring_exec',`
+    gen_require(`
+        type session_monitoring_exec_t;
+    ')
+    
+    corecmd_search_bin($1)
+    can_exec($1, session_monitoring_exec_t)
+')

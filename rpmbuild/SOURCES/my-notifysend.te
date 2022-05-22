@@ -1,0 +1,12 @@
+module my-notifysend 1.0;
+
+require {
+    type system_dbusd_var_lib_t;
+    type session_monitoring_t;
+    class dir search;
+    class file { getattr open read };
+}
+
+#============= session_monitoring_t ==============
+allow session_monitoring_t system_dbusd_var_lib_t:dir search;
+allow session_monitoring_t system_dbusd_var_lib_t:file { getattr open read };

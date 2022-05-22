@@ -1,0 +1,5 @@
+[session-monitoring-repo]
+name=session-monitoring-repo
+baseurl=http://localhost/session-monitoring-repo
+enabled=1
+gpgkey=http://localhost/session-monitoring-repo/RPM-GPG-KEY-Rodionov-Dmitriy

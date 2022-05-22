@@ -1,0 +1,25 @@
+policy_module(session_monitoring, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type session_monitoring_t;
+type session_monitoring_exec_t;
+init_daemon_domain(session_monitoring_t, session_monitoring_exec_t)
+
+permissive session_monitoring_t;
+
+########################################
+#
+# session_monitoring local policy
+#
+allow session_monitoring_t self:fifo_file rw_fifo_file_perms;
+allow session_monitoring_t self:unix_stream_socket create_stream_socket_perms;
+
+domain_use_interactive_fds(session_monitoring_t)
+
+files_read_etc_files(session_monitoring_t)
+
+miscfiles_read_localization(session_monitoring_t)

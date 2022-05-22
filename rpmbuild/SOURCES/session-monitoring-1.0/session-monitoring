@@ -1,0 +1,22 @@
+#!/bin/bash
+
+logger "SSH monitoring started"
+trap "SSH service catched USR1 signal" SIGUSR1
+
+current_user=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
+
+while true
+do
+    new_user=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
+    check=$(diff <( echo "$current_user") <( echo "$new_user") |  grep ">")
+    
+    if [ -n "$check" ]
+    then
+        current_user=$new_user
+        logger $check successfully logged in
+        echo "$check successfully logged in"
+    fi
+    
+    sleep 30 &
+    wait
+done

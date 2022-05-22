@@ -1,0 +1,16 @@
+module my-session-monitoring 1.0;
+
+require {
+    type bin_t;
+    type session_monitoring_t;
+    type proc_t;
+    class file { execute getattr open read };
+}
+
+#============= session_monitoring_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow session_monitoring_t bin_t:file execute;
+
+#!!!! This avc is allowed in the current policy
+allow session_monitoring_t proc_t:file { getattr open read };

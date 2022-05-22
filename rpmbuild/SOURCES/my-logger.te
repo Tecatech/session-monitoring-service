@@ -1,0 +1,18 @@
+module my-logger 1.0;
+
+require {
+    type kernel_t;
+    type passwd_file_t;
+    type devlog_t;
+    type session_monitoring_t;
+    class sock_file write;
+    class unix_dgram_socket { connect create sendto };
+    class file { getattr open read };
+}
+
+#============= session_monitoring_t ==============
+allow session_monitoring_t devlog_t:sock_file write;
+
+allow session_monitoring_t kernel_t:unix_dgram_socket sendto;
+allow session_monitoring_t passwd_file_t:file { getattr open read };
+allow session_monitoring_t self:unix_dgram_socket { connect create };

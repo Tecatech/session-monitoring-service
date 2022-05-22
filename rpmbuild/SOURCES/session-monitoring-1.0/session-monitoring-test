@@ -1,0 +1,28 @@
+#!/bin/bash
+
+current_user=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
+
+sudo useradd new_user
+sudo -u new_user mkdir -p /home/new_user/.ssh
+sudo -u new_user chmod u+rwx /home/new_user/.ssh
+
+sleep 15
+sudo -u new_user ssh-keygen -q -N "" -f /home/new_user/.ssh/id_rsa  &> /dev/null
+sudo -u new_user cp /home/new_user/.ssh/id_rsa.pub /home/new_user/.ssh/authorized_keys
+sudo -u new_user ssh -tt -o "StrictHostKeyChecking=no" -i /home/new_user/.ssh/id_rsa 127.0.0.1 "sleep 5" &> /dev/null &
+
+new_user=$(ps -eo command | grep "^sshd:.*@.*$" | awk -F'[ @]' '{print $2}')
+check=$(diff <( echo "$current_user") <( echo "$new_user") |  grep ">")
+
+sudo userdel -fr new_user &> /dev/null
+
+if [[ $check == *"new_user"* ]]
+then
+    echo "Service error"
+    exit 1
+fi
+
+echo "Service works correctly"
+
+man session-monitoring
+exit 0

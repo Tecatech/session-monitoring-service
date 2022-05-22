@@ -1,0 +1,15 @@
+[Unit]
+Description=Session monitoring service
+Documentation=man:session-monitoring(8)
+After=sshd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/session-monitoring
+Restart=always
+NotifyAccess=all
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
