@@ -230,7 +230,7 @@ Complete!
 
 ```
 [tecatexas@10 rpmbuild]$ journalctl -f -u session-monitoring
--- Logs begin at Sun 2022-05-20 05:45:34 EDT. --
+-- Logs begin at Fri 2022-05-20 05:45:34 EDT. --
 May 20 06:38:36 10.0.2.15 systemd[1]: Stopped Session monitoring service.
 May 20 06:39:52 10.0.2.15 systemd[1]: Started Session monitoring service.
 May 20 06:58:20 10.0.2.15 systemd[1]: Stopping Session monitoring service...
